@@ -1,0 +1,28 @@
+<div class="container" style="background-color:DodgerBlue;">
+    <h1 class="text-center text-white" >Genera tu equipo inicial</h1>
+    <div class="row" style="background-color:DodgerBlue;">
+    @for (pokemon of pokemons; track pokemon['id']) {
+        <div class="col-lg-4">
+            <div class="card text-white bg-warning mb-3 --bs-dark-border-subtle" style="width: 18rem;">
+                <img [src]="pokemon['sprites'].front_default" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{ pokemon['name'].toUpperCase()}}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-warning mb-3 text-white">Número: {{pokemon['order']}}</li>
+                <li class="list-group-item bg-warning mb-3 text-white">Altura: {{pokemon['height']/10}} m.</li>
+                <li class="list-group-item bg-warning mb-3 text-white">Peso: {{pokemon['weight']/10}} kg.</li>
+                </ul>
+                <div class="card-body">                
+                    <h6 class="card-title">Atributos</h6>
+                    <ul class="list-group list-group-flush">                    
+                    @for (tipo of pokemon['types']; track tipo['slot']) {
+                        <li class="list-group-item bg-warning mb-3 text-white">{{tipo['type'].name.toUpperCase()}}</li>   
+                    }    
+                    </ul>
+                </div>
+            </div>
+        </div>        
+    }
+    </div>
+</div>
